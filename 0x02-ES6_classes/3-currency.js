@@ -1,37 +1,31 @@
-class Currency {
-    constructor(code, name) {
-        this._code = code;
-        this._name = name;
-    }
+export default class Currency {
+  constructor(code, name) {
+    this.code = code;
+    this.name = name;
+  }
 
-    // Getter for code
-    get code() {
-        return this._code;
-    }
+  displayFullCurrency() {
+    return `${this._name} (${this._code})`;
+  }
 
-    // Setter for code
-    set code(newCode) {
-        if (typeof newCode !== 'string') {
-            throw new Error('Invalid input type. code must be a string.');
-        }
-        this._code = newCode;
-    }
+  get code() {
+    return this._code;
+  }
 
-    // Getter for name
-    get name() {
-        return this._name;
+  set code(code) {
+    if ((typeof code !== 'string') && !(code instanceof String)) {
+      throw new TypeError('Code must be a string');
     }
+    this._code = code;
+  }
 
-    // Setter for name
-    set name(newName) {
-        if (typeof newName !== 'string') {
-            throw new Error('Invalid input type. name must be a string.');
-        }
-        this._name = newName;
-    }
+  get name() {
+    return this._name;
+  }
 
-    // Method to display full currency
-    displayFullCurrency() {
-        return `${this._name} (${this._code})`;
+  set name(name) {
+    if ((typeof name !== 'string') && !(name instanceof String)) {
+      throw new TypeError('Name must be a string');
     }
-}
+    this._name = name;
+  }
